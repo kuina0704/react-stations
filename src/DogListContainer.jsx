@@ -4,7 +4,7 @@ import BreedsSelect from './BreedsSelect';
 
 export const DogListContainer = () => {
   const [breeds, setBreeds] = useState([]);
-  const [selectedBreed, setSelectedBreed] = useState([]);
+  const [selectedBreed, setSelectedBreed] = useState("affenpinscher");
   const [dogImgList, setDogImgList] = useState([]);
 
   const onChangeBreed = (e) => {
@@ -20,11 +20,14 @@ export const DogListContainer = () => {
   );
 
   const clickButton = () => {
+    // console.log("test")
     fetch('https://dog.ceo/api/breed/'+ selectedBreed + '/images/random/12')
-    .then(res =>res.json())
-    .then(data => {setDogImgList(data.message)})
-    .catch(() => alert("error"))
+      .then(res =>res.json())
+      .then(data => {setDogImgList(data.message)})
+      .catch(() => alert("error"))
   }
+  
+  
 
   return (
     <>
